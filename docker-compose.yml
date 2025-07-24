@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  # Banco de dados PostgreSQL
+  postgres:
+    image: postgres:14-alpine
+    container_name: sistema-contabil-postgres
+    environment:
+      POSTGRES_DB: sistema_contabil
+      POSTGRES_USER: contabil_user
+      POSTGRES_PASSWORD: contabil123
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./sistema-contabil-backend/migrations/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+    ports:
+      - "5432:5432"
+    networks:
+      - sistema-contabil-network
+    restart: unless-stopped
+
+  # Backend Flask
+  backend:
+    build: ./sistema-contabil-backend
+    container_name: sistema-contabil-backend
+    environment:
+      - FLASK_ENV=production
+      - DATABASE_URL=postgresql://contabil_user:contabil123@postgres:5432/sistema_contabil
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - OPENAI_API_BASE=https://api.openai.com/v1
+      - SMTP_HOST=${SMTP_HOST}
+      - SMTP_PORT=${SMTP_PORT}
+      - SMTP_USER=${SMTP_USER}
+      - SMTP_PASSWORD=${SMTP_PASSWORD}
+    depends_on:
+      - postgres
+    ports:
+      - "5000:5000"
+    networks:
+      - sistema-contabil-network
+    restart: unless-stopped
+
+  # Frontend React
+  frontend:
+    build: ./sistema-contabil-frontend
+    container_name: sistema-contabil-frontend
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+    networks:
+      - sistema-contabil-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+
+networks:
+  sistema-contabil-network:
+    driver: bridge
+
