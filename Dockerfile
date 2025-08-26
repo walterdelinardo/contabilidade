@@ -10,7 +10,7 @@ COPY ./sistema-contabil-frontend/package*.json ./
 COPY ./sistema-contabil-frontend/pnpm-lock.yaml ./
 
 # Instala o pnpm e as dependências
-RUN npm install -g pnpm && pnpm install --frozen-lockfile
+RUN npm install -g pnpm && pnpm install
 
 # Copia o restante do código da pasta frontend
 COPY ./sistema-contabil-frontend/ .
