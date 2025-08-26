@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
-import { Sidebar } from './components/Sidebar'
-import { Dashboard } from './components/Dashboard'
-import { Clientes } from './components/Clientes'
-import { Obrigacoes } from './components/Obrigacoes'
-import { Documentos } from './components/Documentos'
-import { Login } from './components/Login'
+import { Sidebar } from './Sidebar.jsx'
+import { Dashboard } from './Dashboard.jsx'
+import { Clientes } from './Clientes.jsx'
+import { Obrigacoes } from './Obrigacoes.jsx'
+import { Documentos } from './Documentos.jsx'
+import { Login } from './Login.jsx'
 import './App.css'
 
 function App() {
