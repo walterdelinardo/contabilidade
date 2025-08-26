@@ -1,11 +1,11 @@
 # Estágio 1: Build da aplicação frontend
-# Usa uma imagem Node.js para instalar as dependências e fazer o build
 FROM node:18-bullseye AS builder
 
 # Define o diretório de trabalho dentro do container
 WORKDIR /app/sistema-contabil-frontend
 
-# Copia os arquivos de configuração do projeto frontend (package.json e afins)
+# Copia os arquivos de configuração do projeto frontend
+# Esses arquivos estão na subpasta, então o caminho está correto aqui.
 COPY ./sistema-contabil-frontend/package*.json ./
 COPY ./sistema-contabil-frontend/pnpm-lock.yaml ./
 
@@ -21,13 +21,12 @@ RUN pnpm run build
 # ---
 
 # Estágio 2: Servir a aplicação com Caddy
-# Usa uma imagem Caddy oficial e leve
 FROM caddy:2.8.4-alpine
 
-# Copia a Caddyfile da pasta frontend para a configuração do Caddy
-COPY ./sistema-contabil-frontend/Caddyfile /etc/caddy/Caddyfile
+# Copia o Caddyfile da pasta RAIZ, não da subpasta
+COPY ./Caddyfile /etc/caddy/Caddyfile
 
-# Copia os arquivos estáticos (build final) do estágio 1 para a pasta do Caddy
+# Copia os arquivos estáticos (build final) do estágio 1
 COPY --from=builder /app/sistema-contabil-frontend/dist /usr/share/caddy/html
 
 # Expõe a porta para acesso externo
