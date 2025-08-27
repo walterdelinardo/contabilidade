@@ -1,4 +1,7 @@
 Flask
-Pillow
-pytesseract
-werkzeug
+Flask-Cors
+Flask-SQLAlchemy
+psycopg2-binary
+python-dotenv
+Gunicorn
+openai

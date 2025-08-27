@@ -1,6 +1,6 @@
 import os
 import sys
-# DON'T CHANGE THIS !!!
+# N\u00c3O ALTERE ISTO !!!
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
 from flask import Flask, send_from_directory
@@ -22,7 +22,7 @@ from src.routes.automacao import automacao_bp
 app = Flask(__name__, static_folder=os.path.join(os.path.dirname(__file__), 'static'))
 app.config['SECRET_KEY'] = 'asdf#FGSgvasgf$5$WGT'
 
-# Configuração CORS
+# Configura\u00e7\u00e3o CORS
 CORS(app, origins="*")
 
 # Registro dos blueprints
@@ -34,7 +34,7 @@ app.register_blueprint(dashboard_bp, url_prefix='/api')
 app.register_blueprint(ia_bp, url_prefix='/api')
 app.register_blueprint(automacao_bp, url_prefix='/api')
 
-# Configuração do banco de dados usando variável de ambiente
+# Configura\u00e7\u00e3o do banco de dados usando vari\u00e1vel de ambiente
 # O Flask vai ler o valor de DATABASE_URL do docker-compose.yml
 database_url = os.environ.get('DATABASE_URL')
 if database_url:
