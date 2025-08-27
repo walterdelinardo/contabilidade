@@ -29,7 +29,7 @@ COPY ./Caddyfile /etc/caddy/Caddyfile
 COPY --from=builder /app/sistema-contabil-frontend/dist /usr/share/caddy/html
 
 # Expõe a porta para acesso externo
-EXPOSE 80
+EXPOSE 2001
 
 # Comando para iniciar o servidor Caddy
 CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
