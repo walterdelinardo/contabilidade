@@ -1,5 +1,12 @@
 :2001 {
+  # Define a raiz da sua aplicação, que é onde os arquivos de build do frontend serão copiados
   root * /usr/share/caddy/html
+
+  # Habilita o servidor de arquivos para servir a sua aplicação estática
   file_server
+
+  # Esta linha é crucial para SPAs como o React. Ela garante que,
+  # para qualquer rota que o Caddy não encontre, ele redirecione para o index.html,
+  # permitindo que o React Router cuide do roteamento.
   try_files {path} /index.html
 }
