@@ -1,7 +1,8 @@
 import os
 import sys
-# N\u00c3O ALTERE ISTO !!!
-sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
+# A Pylance tem problemas em resolver caminhos de importação.
+# Para resolver, garantimos que a raiz do projeto est\u00e1 no PYTHONPATH.
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from flask import Flask, send_from_directory
 from flask_cors import CORS
