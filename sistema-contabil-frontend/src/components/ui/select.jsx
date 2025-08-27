@@ -1,7 +1,7 @@
 // src/components/ui/select.jsx
 import React from 'react';
 import { cva } from 'class-variance-authority';
-import { cn } from '../../lib/utils'; // Certifique-se de que este caminho está correto
+import { cn } from '../../lib/utils'; // Verifique o caminho para 'utils'
 
 const selectVariants = cva(
   "flex h-10 w-full items-center justify-between rounded-md border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:cursor-not-allowed disabled:opacity-50"
