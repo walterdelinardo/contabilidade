@@ -24,7 +24,7 @@ import {
 } from 'lucide-react'
 
 // URL base da sua API. ALtere se o seu back-end estiver em outra porta/domínio.
-const API_BASE_URL = 'http://localhost:5000/api/documentos'; // Exemplo para Flask na porta 5000 com prefixo /api/documentos
+const API_BASE_URL = 'http://localhost:3001/api/documentos'; // Exemplo para Flask na porta 5000 com prefixo /api/documentos
 
 export function Documentos() {
   const [documentos, setDocumentos] = useState([])
@@ -71,7 +71,7 @@ export function Documentos() {
   const fetchClientes = async () => {
     try {
       // Ajuste esta rota para sua API de clientes
-      const response = await axios.get('http://localhost:5000/api/clientes'); // Exemplo: rota para buscar clientes
+      const response = await axios.get('http://localhost:3001/api/clientes'); // Exemplo: rota para buscar clientes
       setClientes(response.data.clientes); // Assumindo que a API retorna { clientes: [...] }
     } catch (error) {
       console.error('Erro ao buscar clientes:', error);
