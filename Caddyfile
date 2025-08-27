@@ -1,5 +1,5 @@
-:{$PORT:3000} {
-  root * /app/sistema-contabil-frontend/dist
+:{$PORT:2001} {
+  root * /usr/share/caddy/html
   file_server
   try_files {path} /index.html
 }

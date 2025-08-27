@@ -7,7 +7,7 @@ services:
     container_name: sistema-contabil-backend
     environment:
       - FLASK_ENV=production
-      - DATABASE_URL=postgresql://bwqQCWau3ybME2RR:6XHFzssSRgbjzIMUZat3i557497Zcr38@212.85.15.242:5433/n8n
+      - DATABASE_URL=postgresql://bwqQCWau3ybME2RR:6XHFzssSRgbjzIMUZat3i557497Zcr38@212.85.15.242:5433/visao
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - OPENAI_API_BASE=https://api.openai.com/v1
       - SMTP_HOST=${SMTP_HOST}
@@ -15,7 +15,7 @@ services:
       - SMTP_USER=${SMTP_USER}
       - SMTP_PASSWORD=${SMTP_PASSWORD}
     ports:
-      - "5000:5000"
+      - "3001:3001"
     networks:
       - sistema-contabil-network
     restart: unless-stopped
@@ -27,7 +27,7 @@ services:
     depends_on:
       - backend
     ports:
-      - "80:80"
+      - "2001:2001"
     networks:
       - sistema-contabil-network
     restart: unless-stopped
