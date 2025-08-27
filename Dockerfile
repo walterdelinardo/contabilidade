@@ -5,7 +5,6 @@ FROM node:18-bullseye AS builder
 WORKDIR /app/sistema-contabil-frontend
 
 # Copia os arquivos de configuração do projeto frontend
-# Esses arquivos estão na subpasta, então o caminho está correto aqui.
 COPY ./sistema-contabil-frontend/package*.json ./
 COPY ./sistema-contabil-frontend/pnpm-lock.yaml ./
 
